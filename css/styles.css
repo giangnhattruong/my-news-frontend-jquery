@@ -40,17 +40,17 @@ body {
 	background: url(../logo.png) center/cover no-repeat;
 }
 
-.header-search {
+.search-btn {
 	user-select: none;
 	cursor: pointer;
 }
 
-.header-search i {
+.search-btn i {
 	font-size: 1.2rem;
 	color: var(--green);
 }
 
-.header-search input {
+.search-btn input {
 	position: relative;
 	height: 2rem;
 	width: 12rem;
@@ -60,15 +60,15 @@ body {
 	color: var(--grey);
 }
 
-.header-search:hover i {
+.search-btn:hover i {
 	text-shadow: 0 0 var(--shadowBlur) var(--grey);
 }
 
-.header-search:hover input {
+.search-btn:hover input {
 	box-shadow: 0 0 var(--shadowBlur) var(--grey);
 }
 
-.header-search:active {
+.search-btn:active {
 	transform: scale(0.96);
 }
 

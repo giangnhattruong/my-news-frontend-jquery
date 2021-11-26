@@ -9,7 +9,8 @@ $(document).ready(function() {
 			text : 'Back to top headlines'
 		},
 		error          : {
-			text : 'The headlines is temporary unavailable, please try again later.'
+			serverProblemText : 'The headlines is temporary unavailable, please try again later.',
+			noResultText      : 'No article was found, please try again.'
 		}
 	};
 
@@ -17,7 +18,7 @@ $(document).ready(function() {
 	 * Add event
 	 */
 	$('.brand, .line-grey').click(getTopHeadlines);
-	$('.header-search').click(showSearchBox);
+	$('.search-btn').click(showSearchBox);
 	$('.close-btn, .backdrop').click(hideSearchBox);
 	$('#search-form').submit(getQueryHeadlines);
 	/**
@@ -138,7 +139,11 @@ $(document).ready(function() {
 		showContent($('#query-headlines'));
 		$('#query-headlines').empty();
 		const { articles } = data;
-		$.each(articles, addQueryArticles);
+		if (!articles.length) {
+			addEmptyMessage(config.error.noResultText);
+		} else {
+			$.each(articles, addQueryArticles);
+		}
 	}
 
 	/**
@@ -193,10 +198,17 @@ $(document).ready(function() {
 	/**
 	 * Show error message when server responses with error
 	 */
-	function addEmptyMessage() {
+	function addEmptyMessage(text = config.error.serverProblemText) {
 		$('#loading-icon').remove();
 		$('#no-article-found').show();
-		$('#no-article-found').html(`<p>${config.error.text}</p>`);
+		$('#no-article-found').html(`
+			<p>${text}</p>
+			<div class="search-btn">
+                <i class="bi bi-search"></i>
+                <input class="" type="button" value="Search">
+            </div>
+		`);
+		$('.search-btn').click(showSearchBox);
 	}
 
 	/**
