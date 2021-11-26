@@ -104,6 +104,7 @@ $(document).ready(function() {
 
 		const data = {};
 		const inputArray = $('#search-form').serializeArray();
+		$('#search-form').trigger('reset');
 		$.each(inputArray, function(index, input) {
 			const key = input.name;
 			const value = input.value;

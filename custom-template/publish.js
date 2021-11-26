@@ -348,7 +348,7 @@ function linktoExternal(longName, name) {
  */
 function buildNav(members) {
 	let globalNav;
-	let nav = '<h2><a href="index.html">Class Marksheet Document</a></h2>';
+	let nav = '<h2><a href="index.html">My NEWS Document</a></h2>';
 	const seen = {};
 	const seenTutorials = {};
 
@@ -604,7 +604,7 @@ exports.publish = (taffyData, opts, tutorials) => {
 	packages = find({ kind: 'package' });
 
 	generate(
-		'Class Marksheet Document',
+		'My NEWS Document',
 		packages
 			.concat([
 				{
