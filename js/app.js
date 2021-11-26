@@ -43,7 +43,9 @@ $(document).ready(function() {
 			url      : config.topHeadlines.url,
 			dataType : 'json',
 			success  : addTopHeadlines,
-			error    : addEmptyMessage
+			error    : function() {
+				addEmptyMessage(config.error.serverProblemText);
+			}
 		});
 	}
 
@@ -127,7 +129,9 @@ $(document).ready(function() {
 			dataType : 'json',
 			data,
 			success  : addQueryHeadlines,
-			error    : addEmptyMessage
+			error    : function() {
+				addEmptyMessage(config.error.serverProblemText);
+			}
 		});
 	}
 
